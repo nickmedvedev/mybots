@@ -7,6 +7,10 @@ x = 0
 y = 0
 z = 0.5
 #pyrosim.Send_Cube(name="Box", pos=[x,y,z] , size=[length,width,height])
+
+
+
+#pyrosim.Send_Cube(name="Box", pos=[x,y,z] , size=[length,width,height])
 #pyrosim.Send_Cube(name="Box2", pos=[0,1,1.5] , size=[length,width,height])
 for j in range(4):
     for k in range(6):
