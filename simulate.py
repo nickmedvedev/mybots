@@ -5,8 +5,19 @@ import pyrosim.pyrosim as pyrosim
 import numpy
 import random
 import math
-
+#Constants
 pi = math.pi
+#BackLeg
+amplitudeBL = pi/4
+frequencyBL = 5
+phaseOffsetBL = -2
+#FrontLeg
+amplitudeFL = pi/4
+frequencyFL = 5
+phaseOffsetFL = -20
+
+
+
 physicsClient = p.connect(p.GUI)
 p.setAdditionalSearchPath(pybullet_data.getDataPath())
 
@@ -23,13 +34,23 @@ backLegSensorValues = numpy.zeros(1000)
 frontLegSensorValues = numpy.zeros(1000)
 print(backLegSensorValues)
 
-toStore = numpy.linspace(0, 2*pi, 1000)
-targetAngles = numpy.sin(toStore)
-targetAngles = scaled_X = numpy.interp(targetAngles, (-1, 1), (-1/4*pi, 1/4*pi))
-numpy.save('./data/targetAngles.npy', targetAngles)
-exit()
 
-for i in range(1000):
+targetAnglesBL = numpy.linspace(0, 2*pi, 1000)
+targetAnglesFL = numpy.linspace(0, 2*pi, 1000)
+#Motor Command Vector #1
+targetAnglesBL = amplitudeBL * numpy.sin(frequencyBL * targetAnglesBL + phaseOffsetBL)
+#Motor Command Vector #1
+targetAnglesFL = amplitudeFL * numpy.sin(frequencyFL * targetAnglesFL + phaseOffsetFL)
+
+targetAnglesBL = numpy.sin(targetAnglesBL)
+targetAnglesBL = numpy.interp(targetAnglesBL, (targetAnglesBL.min(), targetAnglesBL.max()), (-1/4*pi, 1/4*pi))
+targetAnglesFL = numpy.sin(targetAnglesFL)
+targetAnglesFL = numpy.interp(targetAnglesFL, (targetAnglesFL.min(), targetAnglesFL.max()), (-1/4*pi, 1/4*pi))
+#numpy.save('./data/targetAnglesBL.npy', targetAnglesBL)
+#numpy.save('./data/targetAnglesFL.npy', targetAnglesFL)
+#exit()
+
+for i in range(1000): # "The FOR LOOP"
     p.stepSimulation()
  
     backLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("BackLeg")
@@ -38,13 +59,13 @@ for i in range(1000):
     pyrosim.Set_Motor_For_Joint(bodyIndex = robotId,
                                 jointName = "Torso_BackLeg",
                                 controlMode = p.POSITION_CONTROL,
-                                targetPosition = random.uniform(-.1, .1),
+                                targetPosition = targetAnglesBL[i],
                                 maxForce = 500)
 
     pyrosim.Set_Motor_For_Joint(bodyIndex = robotId,
                                 jointName = "Torso_FrontLeg",
                                 controlMode = p.POSITION_CONTROL,
-                                targetPosition = random.uniform(-.1, .1),
+                                targetPosition = targetAnglesFL[i],
                                 maxForce = 500)
         
     time.sleep(1/1000)
