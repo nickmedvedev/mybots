@@ -5,17 +5,16 @@ import pyrosim.pyrosim as pyrosim
 import numpy
 import random
 import math
-#Constants
-pi = math.pi
+import constants as c
+pi = c.pi
 #BackLeg
-amplitudeBL = pi/4
-frequencyBL = 5
-phaseOffsetBL = -2
+amplitudeBL = c.amplitudeBL
+frequencyBL = c.frequencyBL
+phaseOffsetBL = c.phaseOffsetBL
 #FrontLeg
-amplitudeFL = pi/4
-frequencyFL = 5
-phaseOffsetFL = -20
-
+amplitudeFL = c.amplitudeFL
+frequencyFL = c.frequencyFL
+phaseOffsetFL = c.phaseOffsetFL
 
 
 physicsClient = p.connect(p.GUI)
