@@ -3,6 +3,10 @@ import pyrosim.pyrosim as pyrosim
 from sensor import SENSOR
 
 class ROBOT:
+    def Sense(self):
+        #print("Hey this is working right?")
+        pass
+
     def Prepare_To_Sense(self):
         self.sensors = {}
         for linkName in pyrosim.linkNamesToIndices:
