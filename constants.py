@@ -3,8 +3,8 @@ import math
 pi = math.pi
 #BackLeg
 amplitudeBL = pi/4
-frequencyBL = 5
-phaseOffsetBL = -2
+frequencyBL = 10
+phaseOffsetBL = -20
 #FrontLeg
 amplitudeFL = pi/4
 frequencyFL = 5
