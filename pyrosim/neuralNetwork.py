@@ -28,10 +28,25 @@ class NEURAL_NETWORK:
 
         print("")
     
-    def Update(self):
-        for neuron in self.neurons:
-            if self.neurons[neuron].Is_Sensor_Neuron():
-                self.neurons[neuron].Update_Sensor_Neuron()
+    def Update(self): #added method
+        for neuronName in self.neurons:
+            if self.neurons[neuronName].Is_Sensor_Neuron():
+                self.neurons[neuronName].Update_Sensor_Neuron()
+            else:
+                self.neurons[neuronName].Update_Hidden_Or_Motor_Neuron()
+
+    def Get_Neuron_Names(self): #added method from part 57 I
+        return self.neurons.keys()
+
+    def Is_Motor_Neuron(self, neuronName): #added method part 61 I
+        return self.neurons[neuronName].Is_Motor_Neuron()
+    
+    def Get_Motor_Neurons_Joint(self, neuronName): #added method part 63 I
+        return self.neurons[neuronName].Get_Joint_Name()
+
+    def Get_Value_Of(self, neuronName): #added method part 68 I
+        return self.neurons[neuronName].Get_Value()
+
 
 # ---------------- Private methods --------------------------------------
 
