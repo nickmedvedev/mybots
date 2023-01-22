@@ -11,7 +11,6 @@ class MOTOR:
         self.motorValues = numpy.array([])
         for i in range(1000):
             if self.jointName == "Torso_BackLeg":
-                print('i am INSIDE THE LOOP')
                 self.amplitude = (c.amplitudeBL * 2) / 2
                 self.motorValues = numpy.append(self.motorValues, self.amplitude * numpy.sin(self.frequency * targetAngles[i]+self.offset))
             else:
