@@ -22,6 +22,7 @@ class SIMULATION:
         for i in range(1000): # "The FOR LOOP"
             p.stepSimulation()
             self.robot.Sense(i)
+            self.robot.Think()
             self.robot.Act(i, self.robot.robotId)
             
 

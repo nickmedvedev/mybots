@@ -23,8 +23,6 @@ def Generate_Brain():
     pyrosim.Start_NeuralNetwork("brain.nndf")
     pyrosim.Send_Sensor_Neuron(name = 0 , linkName = "Torso")
     pyrosim.End()
-    pyrosim.Start_URDF("body.urdf")
-    pyrosim.End()
 
 Generate_Body()
 Generate_Brain()
