@@ -42,7 +42,7 @@ class SIMULATION:
 ##                                        targetPosition = targetAnglesFL[i],
 ##                                        maxForce = 500)
 ##                
-            time.sleep(1/100)
+            time.sleep(1/500)
             #print(i)
 
     def __del__(self):

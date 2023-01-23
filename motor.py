@@ -44,4 +44,4 @@ class MOTOR:
         self.amplitude = c.amplitudeBL * 1.5
         self.offset = c.phaseOffsetBL
         self.jointName = jointName
-        self.Prepare_To_Act()
+        #self.Prepare_To_Act()
