@@ -60,9 +60,8 @@ class NEURON:
 
                 #print(value)
                 #print("pre " + synapse[0], "post " + synapse[1])
-        self.Threshold()
         #print(neurons[self.Get_Name()].Get_Value()) # --> presynaptic neuron's value after (1.0)
-        #exit()
+        exit()
 
     def Allow_Presynaptic_Neuron_To_Influence_Me(self, weight, value): #added from J 27
         result = weight * value
