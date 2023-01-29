@@ -1,6 +1,7 @@
 import numpy
 import pyrosim.pyrosim as pyrosim
 import os
+import random
 
 length = 1
 width = 1
@@ -13,7 +14,11 @@ class SOLUTION:
     def __init__(self):
         self.weights = numpy.random.rand(3,2)
         self.weights = self.weights * 2 - 1
-        
+    
+    def Mutate(self):
+        randRow = random.randint(0,2)
+        randColumn = random.randint(0,1)
+        self.weights[randRow][randColumn] = random.random() * 2 - 1
 
     def Evaluate(self):
         self.Create_World()
