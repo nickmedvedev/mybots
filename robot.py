@@ -38,9 +38,9 @@ class ROBOT:
         print(stateOfLinkZero)
         print(positionOfLinkZero)
         print(xCoordinateOfLinkZero)
-        fileFitness = open("fitness.txt", "w")
-        fileFitness.write(str(xCoordinateOfLinkZero))
-        fileFitness.close()
+        fitnessFile = open("fitness.txt", "w")
+        fitnessFile.write(str(xCoordinateOfLinkZero))
+        fitnessFile.close()
         exit()
 
 

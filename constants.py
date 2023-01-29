@@ -9,3 +9,5 @@ phaseOffsetBL = -20
 amplitudeFL = pi/4
 frequencyFL = 5
 phaseOffsetFL = -20
+
+numberOfGenerations = 2
