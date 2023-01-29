@@ -28,7 +28,7 @@ class SOLUTION:
         fitnessFile = open("fitness.txt", "r")
         self.fitness = float(fitnessFile.read().strip())
         fitnessFile.close()
-        print(self.fitness)
+        #print(self.fitness)
 
 
 
