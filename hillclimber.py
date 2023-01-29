@@ -13,12 +13,19 @@ class HILL_CLIMBER:
         self.child.Mutate()
 
     def Select(self):
-        pass
+        if self.parent.fitness < self.child.fitness:
+            self.parent = self.child
+        #print("this is the parent fitness" + str(self.parent.fitness))
+        #print("this is the child fitness" + str(self.child.fitness))
+    
+    def Print(self):
+        print("This is the fitness of the parent: " + str(self.parent.fitness) + " This is the fitness of the child: " + str(self.child.fitness))
     
     def Evolve_For_One_Generation(self):
         self.Spawn()
         self.Mutate()
         self.child.Evaluate()
+        self.Print()
         self.Select()
 
     def Evolve(self):
