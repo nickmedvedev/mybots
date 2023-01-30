@@ -11,3 +11,6 @@ frequencyFL = 5
 phaseOffsetFL = -20
 
 numberOfGenerations = 10
+
+#From M
+populationSize = 2

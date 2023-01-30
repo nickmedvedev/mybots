@@ -2,12 +2,17 @@ from solution import SOLUTION
 import constants as c
 import copy
 
-class HILL_CLIMBER:
+class PARALLEL_HILL_CLIMBER:
     def __init__(self):
-        self.parent = SOLUTION()
+        self.parents = {}
+        for i in range(c.populationSize):
+            self.parents[i] = SOLUTION()
+        #print(self.parents)
+        #self.parent = SOLUTION()
     
     def Show_Best(self):
-        self.parent.Evaluate("GUI")
+        pass
+        #self.parent.Evaluate("GUI")
 
     def Spawn(self):
         self.child = copy.deepcopy(self.parent)
@@ -32,7 +37,9 @@ class HILL_CLIMBER:
         self.Select()
 
     def Evolve(self):
-        self.parent.Evaluate("GUI")
-        for currentGeneration in range(c.numberOfGenerations):
-            self.Evolve_For_One_Generation()
+        for parent in self.parents.values():
+            parent.Evaluate("GUI")
+        #self.parent.Evaluate("GUI")
+        #for currentGeneration in range(c.numberOfGenerations):
+        #    self.Evolve_For_One_Generation()
                 
