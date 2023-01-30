@@ -79,11 +79,13 @@
 
 # New Top of File
 from simulation import SIMULATION
+import sys
 
 
 
+directOrGUI = sys.argv[1]
+simulation = SIMULATION(directOrGUI)
 
-simulation = SIMULATION()
 simulation.Run()
 
 simulation.Get_Fitness()

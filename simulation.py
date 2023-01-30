@@ -9,12 +9,20 @@ from robot import ROBOT
 from sensor import SENSOR
 
 class SIMULATION:
-    def __init__(self):
+    def __init__(self, directOrGUI):
+        # ADD IF STATEMENT AND FIX EVOLVE (ADD PARAMETERS)
+        #print(directOrGUI)
+        if directOrGUI == "DIRECT":
+            self.physicsClient = p.connect(p.DIRECT)
+            #print("I am here")
+        else:
+            self.physicsClient = p.connect(p.GUI)
         self.physicsClient = p.connect(p.DIRECT)
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
         p.setGravity(0, 0, -100.8)
         self.world = WORLD()
         self.robot = ROBOT()
+        
 
 
 
@@ -24,7 +32,7 @@ class SIMULATION:
             self.robot.Sense(i)
             self.robot.Think()
             self.robot.Act(i, self.robot.robotId)
-            #time.sleep(1/500)
+            time.sleep(1/2000)
 
     def Get_Fitness(self):
         self.robot.Get_Fitness()

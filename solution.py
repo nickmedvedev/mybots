@@ -20,11 +20,11 @@ class SOLUTION:
         randColumn = random.randint(0,1)
         self.weights[randRow][randColumn] = random.random() * 2 - 1
 
-    def Evaluate(self):
+    def Evaluate(self, directORgui):
         self.Create_World()
         self.Create_Body()
         self.Create_Brain()
-        os.system("python3 simulate.py")
+        os.system("python3 simulate.py " + directORgui)
         fitnessFile = open("fitness.txt", "r")
         self.fitness = float(fitnessFile.read().strip())
         fitnessFile.close()
