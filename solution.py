@@ -11,9 +11,13 @@ y = 0
 z = 0.5
 
 class SOLUTION:
-    def __init__(self):
+    def __init__(self, nextAvailableID):
+        self.myID = nextAvailableID
         self.weights = numpy.random.rand(3,2)
         self.weights = self.weights * 2 - 1
+
+    def Set_ID(self, id):
+        self.myID = id
     
     def Mutate(self):
         randRow = random.randint(0,2)
