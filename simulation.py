@@ -10,8 +10,7 @@ from sensor import SENSOR
 
 class SIMULATION:
     def __init__(self, directOrGUI):
-        # ADD IF STATEMENT AND FIX EVOLVE (ADD PARAMETERS)
-        #print(directOrGUI)
+        self.directOrGUI = directOrGUI
         if directOrGUI == "DIRECT":
             self.physicsClient = p.connect(p.DIRECT)
             #print("I am here")
@@ -32,7 +31,8 @@ class SIMULATION:
             self.robot.Sense(i)
             self.robot.Think()
             self.robot.Act(i, self.robot.robotId)
-            time.sleep(1/2000)
+            if self.directOrGUI == "GUI":
+                time.sleep(1/2000)
 
     def Get_Fitness(self):
         self.robot.Get_Fitness()
