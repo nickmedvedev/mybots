@@ -1,9 +1,12 @@
 from solution import SOLUTION
 import constants as c
 import copy
+import os
 
 class PARALLEL_HILL_CLIMBER:
     def __init__(self):
+        os.system("rm brain*.nndf")
+        os.system("rm fitness*.txt")
         self.nextAvailableID = 0
         self.parents = {}
         for i in range(c.populationSize):
@@ -13,36 +16,54 @@ class PARALLEL_HILL_CLIMBER:
         #self.parent = SOLUTION()
     
     def Show_Best(self):
-        pass
+        checker = 1000000
+        for parent in self.parents:
+            if self.parents[parent].fitness < checker:
+                checker = self.parents[parent].fitness
         #self.parent.Evaluate("GUI")
+        self.parents[parent].Start_Simulation("GUI")
 
     def Spawn(self):
-        self.child = copy.deepcopy(self.parent)
-        self.child.Set_ID(self.nextAvailableID)
-        self.nextAvailableID += 1
-    def Mutate(self):
-        self.child.Mutate()
+        self.children = {}
+        for parent in self.parents:     
+            self.children[parent] = copy.deepcopy(self.parents[parent])
+            self.children[parent].Set_ID(self.nextAvailableID)
+            self.nextAvailableID += 1
+        #print(self.children)
+        #exit()
 
+    def Mutate(self):
+        for child in self.children:
+            self.children[child].Mutate()
+        
     def Select(self):
-        if self.parent.fitness > self.child.fitness:
-            self.parent = self.child
+        for key in self.parents:
+            if self.parents[key].fitness > self.children[key].fitness:
+                self.parents[key] = self.children[key]
         #print("this is the parent fitness" + str(self.parent.fitness))
         #print("this is the child fitness" + str(self.child.fitness))
     
     def Print(self):
-        print("This is the fitness of the parent: " + str(self.parent.fitness) + " This is the fitness of the child: " + str(self.child.fitness))
+        for key in self.parents:
+            print('\n')
+            print("This is the fitness of the parent: ", self.parents[key].fitness, " This is the fitness of the child: ", self.children[key].fitness)
+            print('\n')
     
     def Evolve_For_One_Generation(self):
         self.Spawn()
         self.Mutate()
-        self.child.Evaluate("DIRECT")
+        self.Evaluate(self.children)
         self.Print()
         self.Select()
 
     def Evolve(self):
-        for parent in self.parents.values():
-            parent.Evaluate("GUI")
-        #self.parent.Evaluate("GUI")
-        #for currentGeneration in range(c.numberOfGenerations):
-        #    self.Evolve_For_One_Generation()
+        self.Evaluate(self.parents)
+        for currentGeneration in range(c.numberOfGenerations):
+            self.Evolve_For_One_Generation()
+
+    def Evaluate(self, solutions):
+        for parent in solutions:
+            solutions[parent].Start_Simulation("DIRECT")
+        for parent in solutions:
+            solutions[parent].Wait_For_Simulation_To_End()
                 

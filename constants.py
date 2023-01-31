@@ -13,4 +13,4 @@ phaseOffsetFL = -20
 numberOfGenerations = 10
 
 #From M
-populationSize = 2
+populationSize = 10

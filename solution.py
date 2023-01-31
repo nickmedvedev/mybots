@@ -25,19 +25,27 @@ class SOLUTION:
         randColumn = random.randint(0,1)
         self.weights[randRow][randColumn] = random.random() * 2 - 1
 
-    def Evaluate(self, directORgui):
+    def Start_Simulation(self, directORgui):
         self.Create_World()
         self.Create_Body()
         self.Create_Brain()
         #os.system("python3 simulate.py " + directORgui)
         os.system("python3 simulate.py " + directORgui + " " + str(self.myID) + " &")
+
+    def Wait_For_Simulation_To_End(self):
         fitnessFile = "fitness" + str(self.myID) + ".txt"
         while not os.path.exists(fitnessFile):
             time.sleep(0.01)
-        fitnessFile = open("fitness"+str(self.myID)+".txt", "r")
-        self.fitness = float(fitnessFile.read().strip())
-        print(self.fitness)
-        fitnessFile.close()
+        f = open(fitnessFile, "r")
+        self.fitness = float(f.read())
+        f.close()
+        # rm fitnessID.txt
+        os.system("rm " + fitnessFile)
+        #print(self.fitness)
+
+
+    def Evaluate(self, directORgui):
+        pass
         #print(self.fitness)
 
 
