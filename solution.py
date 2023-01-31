@@ -2,6 +2,7 @@ import numpy
 import pyrosim.pyrosim as pyrosim
 import os
 import random
+import time
 
 length = 1
 width = 1
@@ -29,9 +30,13 @@ class SOLUTION:
         self.Create_Body()
         self.Create_Brain()
         #os.system("python3 simulate.py " + directORgui)
-        os.system("python3 simulate.py " + directORgui + " &")
-        fitnessFile = open("fitness.txt", "r")
+        os.system("python3 simulate.py " + directORgui + " " + str(self.myID) + " &")
+        fitnessFile = "fitness" + str(self.myID) + ".txt"
+        while not os.path.exists(fitnessFile):
+            time.sleep(0.01)
+        fitnessFile = open("fitness"+str(self.myID)+".txt", "r")
         self.fitness = float(fitnessFile.read().strip())
+        print(self.fitness)
         fitnessFile.close()
         #print(self.fitness)
 
@@ -53,7 +58,7 @@ class SOLUTION:
         pyrosim.End()
 
     def Create_Brain(self):
-        pyrosim.Start_NeuralNetwork("brain.nndf")
+        pyrosim.Start_NeuralNetwork("brain"+str(self.myID)+".nndf")
 
         pyrosim.Send_Sensor_Neuron(name = 0 , linkName = "Torso")
         pyrosim.Send_Sensor_Neuron(name = 1 , linkName = "BackLeg")
