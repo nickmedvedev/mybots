@@ -16,12 +16,17 @@ class PARALLEL_HILL_CLIMBER:
         #self.parent = SOLUTION()
     
     def Show_Best(self):
-        checker = 1000000
-        for parent in self.parents:
-            if self.parents[parent].fitness < checker:
-                checker = self.parents[parent].fitness
+        #checker = 1000000
+        #for parent in self.parents:
+        #    if self.parents[parent].fitness < checker:
+        #        checker = self.parents[parent].fitness
         #self.parent.Evaluate("GUI")
-        self.parents[parent].Start_Simulation("GUI")
+        #self.parents[parent].Start_Simulation("GUI")
+        lowest = 0
+        for i in range(0, c.populationSize):
+            if self.parents[i].fitness < self.parents[lowest].fitness:
+                lowest = i
+        self.parents[lowest].Start_Simulation("GUI")
 
     def Spawn(self):
         self.children = {}

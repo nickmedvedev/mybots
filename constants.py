@@ -10,7 +10,11 @@ amplitudeFL = pi/4
 frequencyFL = 5
 phaseOffsetFL = -20
 
-numberOfGenerations = 10
 
+numberOfGenerations = 1
 #From M
-populationSize = 10
+populationSize = 1
+
+#From N
+numSensorNeurons = 3
+numMotorNeurons = 2

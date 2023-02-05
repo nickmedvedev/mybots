@@ -3,6 +3,7 @@ import pyrosim.pyrosim as pyrosim
 import os
 import random
 import time
+import constants as c
 
 length = 1
 width = 1
@@ -14,15 +15,15 @@ z = 0.5
 class SOLUTION:
     def __init__(self, nextAvailableID):
         self.myID = nextAvailableID
-        self.weights = numpy.random.rand(3,2)
+        self.weights = numpy.random.rand(c.numSensorNeurons, c.numMotorNeurons)
         self.weights = self.weights * 2 - 1
 
     def Set_ID(self, id):
         self.myID = id
     
     def Mutate(self):
-        randRow = random.randint(0,2)
-        randColumn = random.randint(0,1)
+        randRow = random.randint(0, c.numSensorNeurons - 1)
+        randColumn = random.randint(0, c.numMotorNeurons - 1)
         self.weights[randRow][randColumn] = random.random() * 2 - 1
 
     def Start_Simulation(self, directORgui):
@@ -74,7 +75,7 @@ class SOLUTION:
         pyrosim.Send_Motor_Neuron( name = 3 , jointName = "Torso_BackLeg")
         pyrosim.Send_Motor_Neuron( name = 4 , jointName = "Torso_FrontLeg")
 
-        for currentRow in range(3):
-            for currentColumn in range(2):
-                pyrosim.Send_Synapse(sourceNeuronName = currentRow, targetNeuronName = currentColumn+3, weight = self.weights[currentRow][currentColumn])
+        for currentRow in range(c.numSensorNeurons):
+            for currentColumn in range(c.numMotorNeurons):
+                pyrosim.Send_Synapse(sourceNeuronName = currentRow, targetNeuronName = currentColumn+c.numSensorNeurons, weight = self.weights[currentRow][currentColumn])
         pyrosim.End()
