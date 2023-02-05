@@ -42,8 +42,8 @@ class ROBOT:
         fitnessFile = open("tmp"+self.solutionID+".txt", "w")
 
         fitnessFile.write(str(xCoordinateOfLinkZero))
-        os.system("mv "+ "tmp"+str(self.solutionID)+".txt" + " " + "fitness" +str(self.solutionID)+".txt")
         fitnessFile.close()
+        os.system("mv "+ "tmp"+str(self.solutionID)+".txt" + " " + "fitness" +str(self.solutionID)+".txt")
         exit()
 
 
