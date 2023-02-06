@@ -11,10 +11,12 @@ frequencyFL = 5
 phaseOffsetFL = -20
 
 
-numberOfGenerations = 1
+numberOfGenerations = 10
 #From M
-populationSize = 1
+populationSize = 10
 
 #From N
-numSensorNeurons = 9
+numSensorNeurons = 4
 numMotorNeurons = 8
+
+motorJointRange = 0.2
