@@ -11,9 +11,9 @@ frequencyFL = 20
 phaseOffsetFL = 1
 
 
-numberOfGenerations = 1
+numberOfGenerations = 12
 #From M
-populationSize = 1
+populationSize = 12
 
 #From N
 numSensorNeurons = 5
