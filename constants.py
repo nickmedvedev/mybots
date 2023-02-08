@@ -2,21 +2,21 @@
 import math
 pi = math.pi
 #BackLeg
-amplitudeBL = pi/4
-frequencyBL = 10
-phaseOffsetBL = -20
+amplitudeBL = 8
+frequencyBL = 20
+phaseOffsetBL = 1
 #FrontLeg
-amplitudeFL = pi/4
-frequencyFL = 5
-phaseOffsetFL = -20
+amplitudeFL = 8
+frequencyFL = 20
+phaseOffsetFL = 1
 
 
-numberOfGenerations = 10
+numberOfGenerations = 1
 #From M
-populationSize = 10
+populationSize = 1
 
 #From N
-numSensorNeurons = 4
-numMotorNeurons = 8
+numSensorNeurons = 5
+numMotorNeurons = 4
 
-motorJointRange = 0.2
+motorJointRange = 3

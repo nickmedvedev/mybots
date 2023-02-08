@@ -12,16 +12,8 @@ class PARALLEL_HILL_CLIMBER:
         for i in range(c.populationSize):
             self.parents[i] = SOLUTION(self.nextAvailableID)
             self.nextAvailableID += 1
-        #print(self.parents)
-        #self.parent = SOLUTION()
     
     def Show_Best(self):
-        #checker = 1000000
-        #for parent in self.parents:
-        #    if self.parents[parent].fitness < checker:
-        #        checker = self.parents[parent].fitness
-        #self.parent.Evaluate("GUI")
-        #self.parents[parent].Start_Simulation("GUI")
         lowest = 0
         for i in range(0, c.populationSize):
             if self.parents[i].fitness < self.parents[lowest].fitness:
@@ -34,8 +26,6 @@ class PARALLEL_HILL_CLIMBER:
             self.children[parent] = copy.deepcopy(self.parents[parent])
             self.children[parent].Set_ID(self.nextAvailableID)
             self.nextAvailableID += 1
-        #print(self.children)
-        #exit()
 
     def Mutate(self):
         for child in self.children:
@@ -45,8 +35,6 @@ class PARALLEL_HILL_CLIMBER:
         for key in self.parents:
             if self.parents[key].fitness > self.children[key].fitness:
                 self.parents[key] = self.children[key]
-        #print("this is the parent fitness" + str(self.parent.fitness))
-        #print("this is the child fitness" + str(self.child.fitness))
     
     def Print(self):
         for key in self.parents:
