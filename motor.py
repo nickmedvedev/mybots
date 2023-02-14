@@ -10,11 +10,7 @@ class MOTOR:
         targetAngles = numpy.linspace(0, 2*math.pi, 1000)
         self.motorValues = numpy.array([])
         for i in range(1000):
-            if self.jointName == "Torso_BackLeg":  
-                self.amplitude = (c.amplitudeBL * 2) / 2
-                self.motorValues = numpy.append(self.motorValues, self.amplitude * numpy.sin(self.frequency * targetAngles[i]+self.offset))
-            else:
-                self.motorValues = numpy.append(self.motorValues, self.amplitude * numpy.sin(self.frequency * targetAngles[i]+self.offset))
+            self.motorValues = numpy.append(self.motorValues, self.amplitude * numpy.sin(self.frequency * targetAngles[i]+self.offset))
 
         
 
@@ -24,7 +20,7 @@ class MOTOR:
                                     jointName = self.jointName,
                                     controlMode = p.POSITION_CONTROL,
                                     targetPosition = desiredAngle,
-                                    maxForce = 500)
+                                    maxForce = 250)
         
 ##            pyrosim.Set_Motor_For_Joint(bodyIndex = robotId,
 ##                                        jointName = "Torso_BackLeg",

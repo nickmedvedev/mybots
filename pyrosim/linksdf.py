@@ -10,15 +10,15 @@ from pyrosim.commonFunctions import Save_Whitespace
 
 class LINK_SDF:
 
-    def __init__(self,name,pos,size,mass):
+    def __init__(self,name,pos,size,objectType):
 
         self.name = name
 
         self.depth = 2
 
-        self.inertial  = INERTIAL_SDF(mass)
+        self.inertial  = INERTIAL_SDF()
 
-        self.geometry = GEOMETRY_SDF(size)
+        self.geometry = GEOMETRY_SDF(size, objectType)
 
         self.collision = COLLISION_SDF(self.geometry)
 

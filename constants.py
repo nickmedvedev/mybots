@@ -1,5 +1,7 @@
 #Constants
 import math
+import random
+
 pi = math.pi
 #BackLeg
 amplitudeBL = 8
@@ -11,12 +13,17 @@ frequencyFL = 20
 phaseOffsetFL = 1
 
 
-numberOfGenerations = 12
+numberOfGenerations = 1
 #From M
-populationSize = 12
+populationSize = 1
 
-#From N
-numSensorNeurons = 5
-numMotorNeurons = 4
+snake_length = random.randint(1, 10)
+numSensorNeurons = random.randint(1, 10)
+numMotorNeurons = snake_length
 
-motorJointRange = 3
+
+sensors = []
+for _ in range(numSensorNeurons):
+    part = random.randint(0, snake_length + 1)
+    sensors.append(part)
+motorJointRange = 250
