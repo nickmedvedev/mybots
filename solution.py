@@ -17,7 +17,7 @@ class SOLUTION:
     def __init__(self, nextAvailableID):
         self.myID = nextAvailableID
         self.weights = numpy.random.rand(len(c.sensors), len(c.sensors)-1)
-        self.snake_list =  random.randint(1,4)
+        self.snake_list = random.randint(1,4)
         self.weights = self.weights * 2 - 1
 
     def Set_ID(self, id):

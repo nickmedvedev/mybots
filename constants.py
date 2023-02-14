@@ -18,12 +18,10 @@ numberOfGenerations = 1
 populationSize = 1
 
 snake_length = random.randint(1, 10)
-numSensorNeurons = random.randint(1, 10)
-numMotorNeurons = snake_length
-
+numN = random.randint(1, 10)
+motorJointRange = 250
 
 sensors = []
-for _ in range(numSensorNeurons):
+for _ in range(numN):
     part = random.randint(0, snake_length + 1)
     sensors.append(part)
-motorJointRange = 250
