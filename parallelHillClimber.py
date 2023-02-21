@@ -14,11 +14,12 @@ class PARALLEL_HILL_CLIMBER:
             self.nextAvailableID += 1
     
     def Show_Best(self):
-        lowest = 0
+        lowest = 42000000
         for i in range(0, c.populationSize):
-            if self.parents[i].fitness < self.parents[lowest].fitness:
-                lowest = i
-        self.parents[lowest].Start_Simulation("GUI")
+            if self.parents[i].fitness < lowest:
+                lowest = self.parents[i].fitness
+                biggest = self.parents[i]
+        biggest.Start_Simulation("GUI")
 
     def Spawn(self):
         self.children = {}

@@ -13,15 +13,17 @@ frequencyFL = 20
 phaseOffsetFL = 1
 
 
-numberOfGenerations = 1
+numberOfGenerations = 10
 #From M
 populationSize = 1
 
-snake_length = random.randint(1, 10)
-numN = random.randint(1, 10)
-motorJointRange = 250
+linkCount = 4
+numSensorNeurons = random.randint(3, 4)
 
 sensors = []
-for _ in range(numN):
-    part = random.randint(0, snake_length + 1)
+for _ in range(numSensorNeurons):
+    part = random.randint(0, linkCount)
     sensors.append(part)
+
+numMotorNeurons = numSensorNeurons - 1
+motorJointRange = 5000

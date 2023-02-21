@@ -37,7 +37,7 @@ class ROBOT:
     def Get_Fitness(self):
         basePositionAndOrientation = p.getBasePositionAndOrientation(self.robotId)
         basePosition = basePositionAndOrientation[0]
-        xPosition = basePosition[0]
+        #xPosition = basePosition[0]
         yPosition = basePosition[1]
         
         #goalPositionAndOrientation = p.getBasePositionAndOrientation(self.world.worldSDF[5])
@@ -50,7 +50,7 @@ class ROBOT:
         fitnessFile.write(str(yPosition)) #used to be xCoordinateOfLinkZero 
         fitnessFile.close()
         os.system("mv "+ "tmp"+str(self.solutionID)+".txt" + " " + "fitness" +str(self.solutionID)+".txt")
-        exit()
+        #exit()
 
 
     def __init__(self, solutionID):
@@ -62,6 +62,8 @@ class ROBOT:
         self.Prepare_To_Sense()
         self.Prepare_To_Act()
         self.nn = NEURAL_NETWORK("brain"+str(self.solutionID)+".nndf")
-        os.system("rm brain" + str(self.solutionID) +".nndf")
+        
+        #exit()
 
+        os.system("rm brain" + str(self.solutionID) +".nndf")
 

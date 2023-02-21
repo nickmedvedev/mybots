@@ -250,5 +250,4 @@ def Start_Model(modelName,pos):
 def Send_Cube(name = "default", pos = [0,0,0], size=[1,1,1], color = "Blue"):
     Send_Link(name, pos, size, "box", color)
 
-def Send_Sphere(name = "default", pos = [0,0,0], size = [0.5]):
-    Send_Link(name, pos, size, "sphere")
+    
