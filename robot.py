@@ -37,17 +37,16 @@ class ROBOT:
     def Get_Fitness(self):
         basePositionAndOrientation = p.getBasePositionAndOrientation(self.robotId)
         basePosition = basePositionAndOrientation[0]
-        #xPosition = basePosition[0]
-        yPosition = basePosition[1]
+        xPosition = basePosition[0]
+        #yPosition = basePosition[1]
         
         #goalPositionAndOrientation = p.getBasePositionAndOrientation(self.world.worldSDF[5])
         #goalPosition = goalPositionAndOrientation[0]
         #gyPosition = goalPosition[0]
 
-
         fitnessFile = open("tmp"+self.solutionID+".txt", "w")
 
-        fitnessFile.write(str(yPosition)) #used to be xCoordinateOfLinkZero 
+        fitnessFile.write(str(xPosition)) #used to be xCoordinateOfLinkZero 
         fitnessFile.close()
         os.system("mv "+ "tmp"+str(self.solutionID)+".txt" + " " + "fitness" +str(self.solutionID)+".txt")
         #exit()
@@ -57,13 +56,13 @@ class ROBOT:
         self.solutionID = solutionID
         self.motors = {}
         self.world = WORLD()
-        self.robotId = p.loadURDF("body.urdf")
+        self.robotId = p.loadURDF("body"+ str(solutionID) +".urdf")
         pyrosim.Prepare_To_Simulate(self.robotId)
         self.Prepare_To_Sense()
         self.Prepare_To_Act()
-        self.nn = NEURAL_NETWORK("brain"+str(self.solutionID)+".nndf")
+        self.nn = NEURAL_NETWORK("brain"+str(solutionID)+".nndf")
         
         #exit()
-
-        os.system("rm brain" + str(self.solutionID) +".nndf")
+        os.system("rm body" + str(solutionID) +".urdf")
+        os.system("rm brain" + str(solutionID) +".nndf")
 

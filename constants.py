@@ -13,17 +13,17 @@ frequencyFL = 20
 phaseOffsetFL = 1
 
 
-numberOfGenerations = 10
+numberOfGenerations = 20
 #From M
-populationSize = 1
+populationSize = 5
 
 linkCount = 4
-numSensorNeurons = random.randint(3, 4)
+numSensorNeurons = random.randint(2, 3)
 
-sensors = []
+sensorList = []
 for _ in range(numSensorNeurons):
     part = random.randint(0, linkCount)
-    sensors.append(part)
+    sensorList.append(part)
 
 numMotorNeurons = numSensorNeurons - 1
-motorJointRange = 5000
+motorJointRange = 2.1
