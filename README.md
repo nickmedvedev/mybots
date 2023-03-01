@@ -17,6 +17,11 @@ The body, like the brain, changes one element at a time, with the fitness of the
 
 A diagram of how I mutated the bodies is shown below:
 
+![Untitled Notebook-2](https://user-images.githubusercontent.com/115434259/222054614-06da92e3-7f88-44cc-b592-19e946672d86.jpg)
+
+A diagram of the five fitness plots of five seeds is also shown below:
+
+<img width="630" alt="Screen Shot 2023-02-28 at 8 25 01 PM" src="https://user-images.githubusercontent.com/115434259/222054536-25362fbb-6615-4581-b8b4-eee060a96342.png">
 
 
 Robot could not have been built without the help of the following resources:
