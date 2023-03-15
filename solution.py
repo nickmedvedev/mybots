@@ -10,6 +10,7 @@ class SOLUTION:
         self.myID = nextAvailableID
         self.weights = numpy.random.rand(c.numSensorNeurons,c.numMotorNeurons) * 2 - 1
         self.allSizes = []
+        random.seed(15)
         for _ in range(21):
             self.allSizes.append(random.random())
 
