@@ -12,8 +12,6 @@ class PARALLEL_HILL_CLIMBER:
         for i in range(c.populationSize):
             self.parents[i] = SOLUTION(self.nextAvailableID)
             self.nextAvailableID += 1
-
-        self.fitness_graph = {0: [], 1: [], 2: [], 3: [], 4: []}
     
     def Show_Best(self):
         lowest = 42000000
@@ -23,15 +21,9 @@ class PARALLEL_HILL_CLIMBER:
                 biggest = self.parents[i]
         biggest.Start_Simulation("GUI")
 
-        fitness_graph = 'fitness_graph.txt'
-        with open(fitness_graph, 'w') as f:
-            # Loop through dictionary values and write to file
-            for value in self.fitness_graph.values():
-                f.write(f"{value}\n")
-
     def Spawn(self):
         self.children = {}
-        for parent in range(len(self.parents)):     
+        for parent in self.parents:     
             self.children[parent] = copy.deepcopy(self.parents[parent])
             self.children[parent].Set_ID(self.nextAvailableID)
             self.nextAvailableID += 1
@@ -44,10 +36,6 @@ class PARALLEL_HILL_CLIMBER:
         for key in self.parents:
             if self.parents[key].fitness > self.children[key].fitness:
                 self.parents[key] = self.children[key]
-                self.fitness_graph[key].append(self.children[key].fitness * -1)
-            else: 
-                self.fitness_graph[key].append(self.parents[key].fitness * -1)
-
     
     def Print(self):
         for key in self.parents:
