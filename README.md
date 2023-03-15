@@ -2,5 +2,5 @@ PLEASE SEE THE Final_Project.pdf FOR FULL README DOCUMENT. My project follows "T
 
 
 1. 10-second teaser gif: Look at Final_Teaser.gif in the repository
-2. Final Project Video: [to link]
+2. Final Project Video: https://youtu.be/oaUUeYKwB7U
 
